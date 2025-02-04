@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- Bootstrap Icons CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-app">
+        <h1 class="heading">Hello,there</h1>
+        <h2 class="sub-heading">How can I help you?</h2>
+      </header>
+      <ul class="suggesstion">
+        <li class="sug-item">
+          <p class="text">
+            Desighn a home office setup for remote work under 500$
+          </p>
+
+          <span class="bi bi-pencil-square"> </span>
+        </li>
+        <li class="sug-item">
+          <p class="text">
+            How Can I level up my devlopment expertise in 2025?
+          </p>
+
+          <span class="bi bi-lightbulb"> </span>
+        </li>
+        <li class="sug-item">
+          <p class="text">
+            Suggest some usefull tools for debugging in jawascript.
+          </p>
+
+          <span class="bi bi-gender-trans"> </span>
+        </li>
+        <li class="sug-item">
+          <p class="text">
+            Creat a react JS component for the simple Todo list App.
+          </p>
+
+          <span class="bi bi-backpack"> </span>
+        </li>
+      </ul>
+
+      <div class="chat-container"></div>
+
+      <div class="prompt-container">
+        <div class="prompt-wrapper">
+          <form action="#" class="prompt-form">
+            <input
+              type="text"
+              placeholder="Ask Gemini"
+              required
+              class="prompt-input"
+            />
+            <div class="prompt-action">
+              <input type="file" id="fileInput" style="display: none;">
+<button id="add-btn" class="bi bi-paperclip"></button>
+
+              <!-- <button id="add-btn" class="bi bi-paperclip">/ -->
+                <button id="send-btn" class="bi bi-arrow-up"></button>
+              </button>
+            </div>
+          </form>
+
+          <button id="theme-light" class="bi bi-brightness-high"></button>
+          <button class="bi bi-moon" id="dark-mode"></button>
+          <button id="delete" class="bi bi-trash3"></button>
+        </div>
+        <p class="text-desclimer">Gemini can make mistake</p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

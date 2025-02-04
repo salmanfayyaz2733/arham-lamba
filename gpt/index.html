@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <!-- Bootstrap Icons CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+    />
+
+    <title>Document</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: sans-serif;
+      }
+
+      :root {
+        --text-color: #edf3ff;
+        --subheading-color: #97a7ca;
+        --placeholder-color: #c3cdde;
+        --primary-color: #101623;
+        --secondary-color: #283045;
+        --secondary-hover-color: #333e58;
+        --scrolbar-color: #626a7f;
+      }
+
+      body {
+        color: white;
+        background-color: #101623;
+      }
+      .container
+        :where(
+          .header-app,
+          .suggesstion,
+          .message,
+          .prompt-wrapper,
+          .text-desclimer
+        ) {
+        margin: 0 auto;
+        width: 100%;
+        padding: 5px 40px;
+        max-width: 980px;
+      }
+      .container {
+        padding: 42px 0 70px;
+      }
+
+      .container .header-app {
+        margin-top: 1vh;
+      }
+      .header-app .heading {
+        font-size: 3rem;
+        width: fit-content;
+        background: linear-gradient(to right, #1d7edf, #8f6fff);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .header-app .sub-heading {
+        font-size: 2.5rem;
+        margin-top: 5px;
+        color: #8f6fff;
+      }
+      .container .suggesstion {
+        display: flex;
+        gap: 16px;
+        margin-top: 3rem;
+        list-style: none;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .container :is(.header-app, .suggesstion) {
+        display: none;
+      }
+
+      .suggesstion .sug-item {
+        width: 205px;
+        padding: 19px;
+        flex-shrink: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        cursor: pointer;
+        background-color: #282f3d;
+        border-radius: 14px;
+        transition: 0.3s ease;
+      }
+      .suggesstion .sug-item:hover {
+        background-color: #313b52;
+      }
+      .suggesstion .sug-item .text {
+        font-size: 1.1rem;
+      }
+
+      .suggesstion .sug-item span {
+        height: 45px;
+        width: 45px;
+        margin-top: 35px;
+        display: flex;
+        align-self: flex-end;
+        align-items: center;
+        justify-content: center;
+        background-color: #101623;
+        border-radius: 50%;
+        color: #1114e4;
+      }
+
+      /* chat--contaoner */
+
+      .chat-container .message {
+        display: flex;
+        gap: 13px;
+        align-items: center;
+      }
+      .chat-container .message .message-text {
+        padding: 3px 16px;
+        word-wrap: break-word;
+        white-space: pre-line;
+      }
+
+      .chat-container .message-user-mes .message-text {
+        padding: 16px 12px;
+        max-width: 45%;
+        border-radius: 13px 13px 13px 13px;
+        background: var(--scrolbar-color);
+      }
+      .chat-container .bot-mes .avatar {
+        height: 43px;
+        width: 43px;
+        flex-shrink: 0;
+        align-items: flex-end;
+        margin-right: -7px;
+        border-radius: 50%;
+        background-color: #333e58;
+        border: 1px solid var(--secondary-hover-color);
+      }
+
+      .chat-container .bot-mes {
+        margin: 9px auto;
+      }
+
+      .chat-container .message-user-mes {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        /* margin-left: 20rem; */
+      }
+
+      .suggesstion .sug-item:nth-child(2) span {
+        color: rgb(0, 255, 157);
+      }
+      .suggesstion .sug-item:nth-child(3) span {
+        color: rgb(255, 196, 0);
+      }
+      .suggesstion .sug-item:nth-child(4) span {
+        color: rgb(195, 0, 255);
+      }
+
+      .prompt-container {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 16px 0;
+        background: var(--primary-color);
+      }
+
+      .prompt-container :where(.prompt-wrapper, .prompt-form, .prompt-action) {
+        display: flex;
+        gap: 16px;
+        height: 60px;
+        align-items: center;
+      }
+      .prompt-wrapper .prompt-form {
+        width: 100%;
+        height: 100%;
+        border-radius: 130px;
+        background: var(--secondary-color);
+      }
+
+      .prompt-form .prompt-input {
+        height: 100%;
+        width: 100%;
+        background: none;
+        outline: none;
+        border: none;
+        font-size: 1rem;
+        padding-left: 24px;
+        color: var(--text-color);
+      }
+      .prompt-wrapper.prompt-form ::placeholder {
+        color: var(--placeholder-color);
+      }
+      .prompt-wrapper button {
+        width: 50px;
+        height: 80%;
+        border: none;
+        cursor: pointer;
+        border-radius: 50%;
+        color: #edf3ff;
+        flex-shrink: 0;
+        font-size: 1.4rem;
+        background: var(--secondary-color);
+      }
+      .prompt-wrapper button:hover {
+        background: var(--secondary-hover-color);
+      }
+
+      .prompt-form .prompt-action button {
+        width: 45px;
+        height: 45px;
+      }
+      .prompt-form .prompt-action {
+        gap: 5px;
+        margin: right 7px;
+      }
+
+      .prompt-form #send-btn {
+        color: #fff;
+        background-color: #1d7edf;
+        display: none;
+      }
+
+      .prompt-form .prompt-input:valid ~ .prompt-action #send-btn {
+        display: block;
+      }
+
+      .prompt-form #send-btn:hover {
+        background-color: #0264e3;
+      }
+
+      .text-desclimer {
+        padding: 16px 20px 0;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.9rem;
+        color: #888d9b;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header-app">
+        <h1 class="heading">Hello,there</h1>
+        <h2 class="sub-heading">How can I help you?</h2>
+      </header>
+      <ul class="suggesstion">
+        <li class="sug-item">
+          <p class="text">
+            Desighn a home office setup for remote work under 500$
+          </p>
+
+          <span class="bi bi-pencil-square"> </span>
+        </li>
+        <li class="sug-item">
+          <p class="text">
+            How Can I level up my devlopment expertise in 2025?
+          </p>
+
+          <span class="bi bi-lightbulb"> </span>
+        </li>
+        <li class="sug-item">
+          <p class="text">
+            Suggest some usefull tools for debugging in jawascript.
+          </p>
+
+          <span class="bi bi-gender-trans"> </span>
+        </li>
+        <li class="sug-item">
+          <p class="text">
+            Creat a react JS component for the simple Todo list App.
+          </p>
+
+          <span class="bi bi-backpack"> </span>
+        </li>
+      </ul>
+
+      <div class="chat-container">
+        <div class="message-user-mes">
+          <p class="message-text">
+            Lorem ipsum door sit amet consectetur adipisicing elit. In, ipsum.
+          </p>
+        </div>
+        <div class="message bot-mes">
+          <img src="images/logo.jpg" alt="myiage" class="avatar" />
+
+          <p class="message-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. In, ipsum.
+          </p>
+        </div>
+      </div>
+
+      <div class="prompt-container">
+        <div class="prompt-wrapper">
+          <form action="#" class="prompt-form">
+            <input
+              type="text"
+              placeholder="Ask Gemini"
+              required
+              class="prompt-input"
+            />
+            <div class="prompt-action">
+              <button id="add-btn" class="bi bi-paperclip">
+                <button id="send-btn" class="bi bi-arrow-up"></button>
+              </button>
+            </div>
+          </form>
+
+          <button id="theme-light" class="bi bi-brightness-high"></button>
+          <button id="delete" class="bi bi-trash3"></button>
+        </div>
+        <p class="text-desclimer">Gemini can make mistake</p>
+      </div>
+    </div>
+    <script src="scr.js"></script>
+  </body>
+</html>
